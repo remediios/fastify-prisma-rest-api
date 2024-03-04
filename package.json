@@ -1,0 +1,25 @@
+{
+  "name": "fastify-prisma-rest-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/remediios/fastify-prisma-rest-api.git",
+  "author": "Miguel Remédios <miguelremediios@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "tsnd --respawn --transpile-only --exit-child src/app.ts "
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@fastify/jwt": "^8.0.0",
+    "@prisma/client": "^5.10.2",
+    "fastify": "^4.26.2",
+    "fastify-swagger": "^5.2.0",
+    "fastify-zod": "^1.4.0",
+    "zod": "^3.22.4",
+    "zod-to-json-schema": "^3.22.4"
+  }
+}
