@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
-import { createProduct } from './product.service';
+import { createProduct, getProducts } from './product.service';
 import { CreateProductInput } from './product.schema';
 
 export async function createProductHandler(
@@ -19,4 +19,9 @@ export async function createProductHandler(
     console.log(error);
     reply.code(500).send(error);
   }
+}
+
+export async function getProductsHandler() {
+  const products = await getProducts();
+  return products;
 }
