@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
-import { createUser, findUserByEmail } from './user.service';
+import { createUser, findUserByEmail, findUsers } from './user.service';
 import { CreateUserInput, LoginRequest } from './user.schema';
 import { verifyPassword } from '../../utils/hash';
 import { fastify } from '../../app';
@@ -51,4 +51,9 @@ export async function loginHandler(
 
   //respond
   return reply.code(401).send({ message: 'Invalid credentials' });
+}
+
+export async function getUsersHandler() {
+  const users = await findUsers();
+  return users;
 }
