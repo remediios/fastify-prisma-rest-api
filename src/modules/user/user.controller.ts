@@ -9,6 +9,7 @@ export async function registerUserHandler(
   reply: FastifyReply
 ) {
   const body = request.body;
+
   try {
     const user = await createUser(body);
 

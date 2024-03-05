@@ -1,8 +1,24 @@
-import Fastify from 'fastify';
+import Fastify, { FastifyReply, FastifyRequest } from 'fastify';
+import fastifyJwt from '@fastify/jwt';
 import userRoutes from './modules/user/user.route';
 import { userSchemas } from './modules/user/user.schema';
 
 const fastify = Fastify();
+
+fastify.register(fastifyJwt, {
+  secret: process.env.JWT_SECRET ?? 'your_default_secret_value',
+});
+
+fastify.decorate(
+  'authenticate',
+  async (request: FastifyRequest, reply: FastifyReply) => {
+    try {
+      await request.jwtVerify();
+    } catch (error) {
+      return reply.send(error);
+    }
+  }
+);
 
 fastify.get('/healthcheck', function () {
   return { status: 200 };
