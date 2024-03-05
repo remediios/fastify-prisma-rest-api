@@ -4,8 +4,8 @@ import { buildJsonSchemas } from 'fastify-zod';
 //User input properties for product
 const productInput = {
   title: z.string(),
+  price: z.number(),
   content: z.string().optional(),
-  price: z.string(),
 };
 
 //Generated properties for product
@@ -31,8 +31,11 @@ const productsResponseSchema = z.array(productResponseSchema);
 
 export type CreateProductInput = z.infer<typeof createProductSchema>;
 
-export const { schemas: productSchemas, $ref } = buildJsonSchemas({
-  createProductSchema,
-  productResponseSchema,
-  productsResponseSchema,
-});
+export const { schemas: productSchemas, $ref } = buildJsonSchemas(
+  {
+    createProductSchema,
+    productResponseSchema,
+    productsResponseSchema,
+  },
+  { $id: 'ProductSchema' }
+);

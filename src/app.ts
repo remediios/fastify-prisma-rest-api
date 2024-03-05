@@ -2,6 +2,7 @@ import Fastify, { FastifyReply, FastifyRequest } from 'fastify';
 import fastifyJwt from '@fastify/jwt';
 import userRoutes from './modules/user/user.route';
 import { userSchemas } from './modules/user/user.schema';
+import { productSchemas } from './modules/product/product.schema';
 
 export const fastify = Fastify();
 
@@ -31,10 +32,12 @@ fastify.get('/healthcheck', function () {
 });
 
 async function main() {
-  for (const schema of userSchemas) {
+  const allSchemas = [...userSchemas, ...productSchemas];
+  console.log(allSchemas);
+
+  for (const schema of allSchemas) {
     fastify.addSchema(schema);
   }
-
   fastify.register(userRoutes, { prefix: 'api/users' });
 
   try {
