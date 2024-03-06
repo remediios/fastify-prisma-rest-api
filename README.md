@@ -59,8 +59,11 @@ JWT_SECRET="Your random JWT Secret up to your choice"
 5. Push the Prisma schema to reflect on the PostgreSQL Database with `npx prisma db push` or `npx prisma migrate dev --name init` (for historical migration's records)
 
 7. Run the application with `yarn dev`
+8. Lastly, if needed, import the Postman collection file example `Fastify Prisma API.postman_collection.json` into your Postman environment to facilitate API testing.
 
 After completing these steps, you should be able to run this project locally. If you encounter any issues or have any questions, please don't hesitate to reach out.
+
+
 
 ## Usage
 
